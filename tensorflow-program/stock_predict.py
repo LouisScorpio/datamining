@@ -76,10 +76,10 @@ def lstm(batch):      #参数：输入网络批次数目
 #——————————————————训练模型——————————————————
 def train_lstm():
     global batch_size
-    pred,_=rnn(batch_size)
+    pred,_=lstm(batch_size)
     #损失函数
     loss=tf.reduce_mean(tf.square(tf.reshape(pred,[-1])-tf.reshape(Y, [-1])))
- train_op=tf.train.AdamOptimizer(lr).minimize(loss)
+    train_op=tf.train.AdamOptimizer(lr).minimize(loss)
     saver=tf.train.Saver(tf.global_variables())
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
